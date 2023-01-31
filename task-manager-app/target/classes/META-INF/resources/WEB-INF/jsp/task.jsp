@@ -20,8 +20,8 @@
 			<fieldset class="mb-3">
 			<form:label path="done">Achieved:</form:label>
 			 <form:select path="done">
-       		      <option value="true">Yes</option>
-      		      <option value="false">No</option>
+       		      <option value="false">No</option>
+      		      <option value="true">Yes</option>
    			 </form:select>
 			</fieldset>
 			<input type="submit" class="btn btn-success" />

@@ -65,6 +65,7 @@ public class TaskController {
 		if (reult.hasErrors()) {
 			return "updateTask";
 		}
+		task.setUsername(getLoggedInUsername());
 		taskService.updateTask(task);
 		return "redirect:tasks";
 	}
