@@ -33,13 +33,13 @@ public class ApplicationUserDetails implements UserDetailsService {
 			throw new UsernameNotFoundException("user "+ username+" is not found!");	
 		}
 		
-		userName=users.get(0).getEmail();
+		userName=users.get(0).getName();
 		password=users.get(0).getPassword();
 		authorities=new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(users.get(0).getRole()));
 		
 		
-		return new User(username, password, authorities);
+		return new User(userName, password, authorities);
 	}
 
 }

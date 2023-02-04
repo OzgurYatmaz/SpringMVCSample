@@ -4,18 +4,22 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Size;
 
 @Entity
 public class Task {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue//(strategy= GenerationType.AUTO,generator="native")
+//    @GenericGenerator(name = "native",strategy = "native")
 	private int id;
 	private String username;
 	@Size(min=3, message = "At least 3 characters")
@@ -23,6 +27,9 @@ public class Task {
 	private LocalDate targetDate;
 	private boolean done;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+//	@JsonIgnore //not needed to be returned in response
+	private AppUser user;
 	
 	public Task() {
 		super();
@@ -77,12 +84,21 @@ public class Task {
 		this.done = done;
 	}
 
+	public AppUser getUser() {
+		return user;
+	}
+
+	public void setUser(AppUser user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
-				+ targetDate + ", done=" + done + "]";
+				+ targetDate + ", done=" + done + ", user=" + user + "]";
 	}
 
+	 
 	 
 
 }

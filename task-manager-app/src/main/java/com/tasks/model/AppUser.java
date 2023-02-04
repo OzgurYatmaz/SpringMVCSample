@@ -4,9 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.List;
+
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="user")
@@ -21,6 +26,10 @@ public class AppUser {
 	private String email;
 	private String role;
 
+	@OneToMany(mappedBy = "user")//so that user_ıd column will be created in post table
+//	@JsonIgnore //not needed to be returned in response
+	private List<Task> tasks;
+	
 	public String getName() {
 		return name;
 	}
@@ -59,6 +68,20 @@ public class AppUser {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	@Override
+	public String toString() {
+		return "AppUser [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", role=" + role
+				+ ", tasks=" + tasks + "]";
 	}
 
 }

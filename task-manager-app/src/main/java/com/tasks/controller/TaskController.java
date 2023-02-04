@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.tasks.model.AppUser;
 import com.tasks.model.Task;
+import com.tasks.repository.UserRepository;
 import com.tasks.service.TaskService;
 
 import jakarta.validation.Valid;
@@ -24,10 +26,15 @@ public class TaskController {
 	
 	@Autowired
 	private TaskService taskService;
+	@Autowired
+	private UserRepository userRepository;
 
 	@RequestMapping("tasks")
 	public String listAllTasks(ModelMap model) {
-		List<Task> tasks = taskService.findAllTasks();
+		String username = getLoggedInUsername();
+		AppUser user = userRepository.findByName(username).get(0);
+		
+		List<Task> tasks = taskService.findAllTasksForSpecificUser(Integer.toString(user.getId()));
 		model.put("tasks", tasks);
 		return "taskList";
 	}
@@ -48,7 +55,8 @@ public class TaskController {
 			return "task";
 		}
 		String username = getLoggedInUsername();
-		taskService.addTask(username, task.getDescription(), task.getTargetDate(), task.isDone());
+		AppUser user = userRepository.findByName(username).get(0);
+		taskService.addTask(username, task.getDescription(), task.getTargetDate(), task.isDone(), user);
 		return "redirect:tasks";
 	}
 	
@@ -65,7 +73,12 @@ public class TaskController {
 		if (reult.hasErrors()) {
 			return "updateTask";
 		}
-		task.setUsername(getLoggedInUsername());
+		
+		String username = getLoggedInUsername();
+		AppUser user = userRepository.findByName(username).get(0);
+		
+		task.setUsername(username);
+		task.setUser(user);
 		taskService.updateTask(task);
 		return "redirect:tasks";
 	}
