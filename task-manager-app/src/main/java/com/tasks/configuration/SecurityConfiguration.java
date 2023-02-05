@@ -17,10 +17,7 @@ public class SecurityConfiguration {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-		//	.csrf().disable()
-			.authorizeHttpRequests()
-			.requestMatchers("/").permitAll()
+		http.authorizeHttpRequests()
 			.requestMatchers("/showAddUserPage","/addUser","/showAllUsers","/deleteUser").hasAuthority("ADMIN")//hasRole("ROLE_ADMIN")//@PreAuthorize("hasRole('ROLE_ADMIN')") is used instead
 			.anyRequest()
 			.authenticated()

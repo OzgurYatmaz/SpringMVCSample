@@ -31,6 +31,7 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String username=authentication.getName();
 		String password=authentication.getCredentials().toString();
+		System.out.println("username: "+username+" password: "+password);
 		List<AppUser> users = userRepository.findByName(username);
 		if(!CollectionUtils.isEmpty(users)) {
 			AppUser user = users.get(0);

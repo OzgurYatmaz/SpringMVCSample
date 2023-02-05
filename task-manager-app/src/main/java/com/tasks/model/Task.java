@@ -19,7 +19,7 @@ public class Task {
 
     @Id
     @GeneratedValue//(strategy= GenerationType.AUTO,generator="native")
-//    @GenericGenerator(name = "native",strategy = "native")
+    @GenericGenerator(name = "native",strategy = "native")
 	private int id;
 	private String username;
 	@Size(min=3, message = "At least 3 characters")
