@@ -1,5 +1,5 @@
-# SpringMVCSample
-A task manager application with spring mvc, spring security and mysql DB along with...
+ 
+A task manager application with spring mvc, spring security and mysql DB along with. For front end Bootstrap and Jquery is used.
 
 Tasks and users are managed by spring data jpa over mysql db. Fuctionality the api offers are the following:
 
