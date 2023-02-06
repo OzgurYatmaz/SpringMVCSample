@@ -1,3 +1,7 @@
 INSERT INTO `task-manager`.`user` (`id`, `email`, `password`, `role`, `name`) VALUES ('1', 'elif@', '$2a$10$ecsc7knh7VOysdgedpAaQOxEbqvAe6w4i6iWJYGzscRWgY5TJ7Ca2', 'admin', 'Abdulahir');
  
 when you loggin, username:'Abdulahir', password:622
+for my local DB:
+Ahmed,571
+Muhammed, 632
+Mucahid, ahir

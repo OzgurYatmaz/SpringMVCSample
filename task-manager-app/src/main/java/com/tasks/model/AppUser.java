@@ -1,5 +1,6 @@
 package com.tasks.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class AppUser {
 	private String email;
 	private String role;
 
-	@OneToMany(mappedBy = "user")//so that user_ıd column will be created in post table
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")//so that user_ıd column will be created in post table
 //	@JsonIgnore //not needed to be returned in response
 	private List<Task> tasks;
 	
