@@ -9,6 +9,6 @@ Tasks and users are managed by spring data jpa over mysql db. Fuctionality the a
  - When any admin deletes any user, tasks of deleted user are automatically removed from DB.
 
 <p align="center">
-  <img src="your_relative_path_here" width="350" title="hover text">
-  <img src="/docs/add%20or%20update%20task.jpg" width="350" alt="accessibility text">
+  
+  <img src="task-manager-app/docs/add%20or%20update%20task.jpg" width="350" alt="accessibility text">
 </p>
