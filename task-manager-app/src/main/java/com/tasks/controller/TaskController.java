@@ -1,5 +1,7 @@
 package com.tasks.controller;
 import java.time.LocalDate;
+import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +37,28 @@ public class TaskController {
 		AppUser user = userRepository.findByName(username).get(0);
 		
 		List<Task> tasks = taskService.findAllTasksForSpecificUser(Integer.toString(user.getId()));
+		getRemainingTimes(tasks);//tasks.stream().map(t->Period.between(LocalDate.now(),t.getTargetDate());
 		model.put("tasks", tasks);
 		return "taskList";
 	}
 	
+	private void getRemainingTimes(List<Task> tasks) {
+		for(Task t:tasks) {
+			Period period = Period.between(LocalDate.now(),t.getTargetDate());
+			String diff=null;
+			if(t.isDone()) {
+				diff="Accomplished!";
+			}else {
+				if(!period.isNegative()) {
+				diff=period.getYears() + " years, "+period.getMonths() + " months, "+period.getDays() + " days";
+				}else {
+					diff="Expired!";
+				}
+		    }
+			t.setRemainingTime(diff);
+		}
+	}
+
 	@RequestMapping(value="add-task",method = RequestMethod.GET)
 	public String showNewTaskPage(ModelMap model) {
 		String username = getLoggedInUsername();

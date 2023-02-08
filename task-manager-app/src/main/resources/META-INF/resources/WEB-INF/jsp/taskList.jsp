@@ -12,6 +12,7 @@
 					<th>Given Date</th>
 					<th>Target Date</th>
 					<th>Is Done?</th>
+					<th>Remaining Time</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -23,6 +24,7 @@
 						<td>${todo.givenDate}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
+						<td>${todo.remainingTime}</td>
 						<td><a type="button" class="btn btn-warning"
 							href="/deleteTask?id=${todo.id}"> Delete</a></td>
 						<td><a type="button" class="btn btn-success"

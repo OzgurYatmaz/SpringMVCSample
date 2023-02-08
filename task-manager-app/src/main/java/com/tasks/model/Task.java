@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -27,6 +28,8 @@ public class Task {
 	private String description;
 	private LocalDate givenDate;
 	private LocalDate targetDate;
+	@Transient
+	private String remainingTime;
 	private boolean done;
 
 	@ManyToOne//(fetch = FetchType.LAZY)
@@ -101,6 +104,14 @@ public class Task {
 
 	public void setUser(AppUser user) {
 		this.user = user;
+	}
+
+	public String getRemainingTime() {
+		return remainingTime;
+	}
+
+	public void setRemainingTime(String remainingTime) {
+		this.remainingTime = remainingTime;
 	}
 
 	@Override
