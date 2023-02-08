@@ -25,6 +25,7 @@ public class Task {
 	private String username;
 	@Size(min=3, message = "At least 3 characters")
 	private String description;
+	private LocalDate givenDate;
 	private LocalDate targetDate;
 	private boolean done;
 
@@ -36,12 +37,13 @@ public class Task {
 		super();
 	}
 
-	public Task( String username, String description, LocalDate targetDate, boolean done) {
+	public Task( String username, String description, LocalDate targetDate, LocalDate givenDate, boolean done) {
 		super();
 		//this.id = id;
 		this.username = username;
 		this.description = description;
 		this.targetDate = targetDate;
+		this.givenDate=givenDate;
 		this.done = done;
 	}
 	
@@ -51,6 +53,14 @@ public class Task {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public LocalDate getGivenDate() {
+		return givenDate;
+	}
+
+	public void setGivenDate(LocalDate givenDate) {
+		this.givenDate = givenDate;
 	}
 
 	public String getUsername() {

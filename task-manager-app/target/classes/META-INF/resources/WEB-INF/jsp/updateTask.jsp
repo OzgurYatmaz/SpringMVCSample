@@ -10,7 +10,11 @@
 				<form:input type="text" path="description" required="required" />
 				<form:errors path="description" cssClass="text-warning" />
 			</fieldset>
-
+			<fieldset class="mb-3">
+				<form:label path="givenDate">Given Date</form:label>
+				<form:input type="text" path="givenDate" required="required" />
+				<form:errors path="givenDate" cssClass="text-warning" />
+			</fieldset>
 			<fieldset class="mb-3">
 				<form:label path="targetDate">Target Date</form:label>
 				<form:input type="text" path="targetDate" required="required" />

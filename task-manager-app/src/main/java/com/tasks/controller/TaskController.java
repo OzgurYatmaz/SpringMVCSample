@@ -42,7 +42,7 @@ public class TaskController {
 	@RequestMapping(value="add-task",method = RequestMethod.GET)
 	public String showNewTaskPage(ModelMap model) {
 		String username = getLoggedInUsername();
-		Task task=new Task(username, "", LocalDate.now(), false);
+		Task task=new Task(username, "", LocalDate.now(), LocalDate.now(), false);
 		model.put("task", task);
 		return "task";
 	}

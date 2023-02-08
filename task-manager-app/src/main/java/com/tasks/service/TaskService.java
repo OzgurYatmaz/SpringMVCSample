@@ -21,7 +21,7 @@ public class TaskService {
 	private TaskRepository taskRepository;
 	
 	public void addTask(String username, String description, LocalDate targetDate, boolean done, AppUser user) {
-		Task task=new Task( username, description, targetDate, done);
+		Task task=new Task( username, description, targetDate, LocalDate.now(), done);
 		task.setUser(user);
 		taskRepository.save(task);
 	}

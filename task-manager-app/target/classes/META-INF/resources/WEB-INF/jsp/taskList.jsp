@@ -9,6 +9,7 @@
 			<thead>
 				<tr>
 					<th>Description</th>
+					<th>Given Date</th>
 					<th>Target Date</th>
 					<th>Is Done?</th>
 					<th></th>
@@ -19,6 +20,7 @@
 				<c:forEach items="${tasks}" var="todo">
 					<tr>
 						<td>${todo.description}</td>
+						<td>${todo.givenDate}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
 						<td><a type="button" class="btn btn-warning"
