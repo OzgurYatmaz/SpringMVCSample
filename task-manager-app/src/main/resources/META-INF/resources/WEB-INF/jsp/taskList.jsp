@@ -8,6 +8,7 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th>Priority</th>
 					<th>Description</th>
 					<th>Given Date</th>
 					<th>Target Date</th>
@@ -18,17 +19,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${tasks}" var="todo">
+				<c:forEach items="${tasks}" var="task">
 					<tr>
-						<td>${todo.description}</td>
-						<td>${todo.givenDate}</td>
-						<td>${todo.targetDate}</td>
-						<td>${todo.done}</td>
-						<td>${todo.remainingTime}</td>
+						<td>${task.priority}</td>
+						<td>${task.description}</td>
+						<td>${task.givenDate}</td>
+						<td>${task.targetDate}</td>
+						<td>${task.done}</td>
+						<td>${task.remainingTime}</td>
 						<td><a type="button" class="btn btn-warning"
-							href="/deleteTask?id=${todo.id}"> Delete</a></td>
+							href="/deleteTask?id=${task.id}"> Delete</a></td>
 						<td><a type="button" class="btn btn-success"
-							href="/updateTask?id=${todo.id}"> Update</a></td>
+							href="/updateTask?id=${task.id}"> Update</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

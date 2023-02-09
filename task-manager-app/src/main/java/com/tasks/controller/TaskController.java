@@ -43,7 +43,9 @@ public class TaskController {
 	}
 	
 	private void getRemainingTimes(List<Task> tasks) {
+		int priority=1;
 		for(Task t:tasks) {
+			t.setPriority(priority);
 			Period period = Period.between(LocalDate.now(),t.getTargetDate());
 			String diff=null;
 			if(t.isDone()) {
@@ -56,6 +58,7 @@ public class TaskController {
 				}
 		    }
 			t.setRemainingTime(diff);
+			priority++;
 		}
 	}
 

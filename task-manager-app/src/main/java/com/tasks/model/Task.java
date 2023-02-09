@@ -30,6 +30,8 @@ public class Task {
 	private LocalDate targetDate;
 	@Transient//to disable jpa to create a column in DB
 	private String remainingTime;
+	@Transient
+	private int priority;
 	private boolean done;
 
 	@ManyToOne//(fetch = FetchType.LAZY)
@@ -112,6 +114,14 @@ public class Task {
 
 	public void setRemainingTime(String remainingTime) {
 		this.remainingTime = remainingTime;
+	}
+
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 
 	@Override
