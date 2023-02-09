@@ -18,7 +18,8 @@ public class SecurityConfiguration {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-			.requestMatchers("/showAddUserPage","/addUser","/showAllUsers","/deleteUser").hasAuthority("ADMIN")//hasRole("ROLE_ADMIN")//@PreAuthorize("hasRole('ROLE_ADMIN')") is used instead
+			.requestMatchers("/showAddUserPage","/addUser","/showAllUsers").hasAnyAuthority("ADMIN","OWNER")//hasRole("ROLE_ADMIN")//@PreAuthorize("hasRole('ROLE_ADMIN')") is used instead
+			.requestMatchers("/deleteUser").hasAuthority("OWNER")
 			.anyRequest()
 			.authenticated()
 			.and().formLogin()

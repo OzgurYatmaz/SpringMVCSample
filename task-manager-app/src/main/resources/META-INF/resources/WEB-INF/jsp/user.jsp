@@ -24,12 +24,14 @@
 				<form:errors path="email" cssClass="text-warning" />
 			</fieldset>
 			
-			
 			<fieldset class="mb-3">
-				<form:label path="role">Role</form:label>
-				<form:input type="text" path="role" required="required" />
-				<form:errors path="role" cssClass="text-warning" />
+				 Role:  
+				 User<form:radiobutton path="role" value="USER" />  
+       			 Admin<form:radiobutton path="role" value="ADMIN"/>  
+       			 Owner<form:radiobutton path="role" value="OWNER" disabled="true"/>
+        		  
 			</fieldset>
+			 
 			<input type="submit" class="btn btn-success" />
 		</form:form>
 	</div>
