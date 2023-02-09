@@ -28,7 +28,7 @@ public class Task {
 	private String description;
 	private LocalDate givenDate;
 	private LocalDate targetDate;
-	@Transient
+	@Transient//to disable jpa to create a column in DB
 	private String remainingTime;
 	private boolean done;
 
