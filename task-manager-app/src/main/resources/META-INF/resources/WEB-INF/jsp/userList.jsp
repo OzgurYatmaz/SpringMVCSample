@@ -8,6 +8,7 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Name</th>
 					<th>Email</th>
 					<th>Role</th>
@@ -18,6 +19,7 @@
 			<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
+						<td>${user.count}</td>
 						<td>${user.name}</td>
 						<td>${user.email}</td>
 						<td>${user.role}</td>

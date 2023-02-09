@@ -45,10 +45,19 @@ public class UserController {
 	@RequestMapping(value = "/showAllUsers", method = RequestMethod.GET)
 	private String ShowAllUsers(ModelMap model) {
 		List<AppUser> allUsers = userService.getAllUsers();
+		addCount(allUsers);
 		model.put("users", allUsers);
 		return "userList";
 	}
 	
+	private void addCount(List<AppUser> allUsers) {
+		int c=1;
+		for(AppUser a:allUsers) {
+			a.setCount(c);
+			c++;
+		}
+	}
+
 	@RequestMapping(value="deleteUser")
 	public String deleteTask(@RequestParam int id) {
 		userService.deleteUserById(id);

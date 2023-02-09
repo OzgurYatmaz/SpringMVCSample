@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public class AppUser {
 	private String password;
 	private String email;
 	private String role;
+	@Transient
+	private int count;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")//so that user_ıd column will be created in post table
 //	@JsonIgnore //not needed to be returned in response
@@ -77,6 +80,16 @@ public class AppUser {
 
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
+	}
+
+ 
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	@Override
