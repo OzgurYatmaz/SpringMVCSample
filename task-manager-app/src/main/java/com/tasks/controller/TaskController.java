@@ -23,7 +23,7 @@ import com.tasks.service.TaskService;
 import jakarta.validation.Valid;
 
 @Controller
-@SessionAttributes("name")
+//@SessionAttributes("name")
 public class TaskController {
 	
 	@Autowired
@@ -39,6 +39,7 @@ public class TaskController {
 		List<Task> tasks = taskService.findAllTasksForSpecificUser(Integer.toString(user.getId()));
 		getRemainingTimes(tasks);//tasks.stream().map(t->Period.between(LocalDate.now(),t.getTargetDate());
 		model.put("tasks", tasks);
+		model.put("name", username);
 		return "taskList";
 	}
 	
@@ -49,12 +50,12 @@ public class TaskController {
 			Period period = Period.between(LocalDate.now(),t.getTargetDate());
 			String diff=null;
 			if(t.isDone()) {
-				diff="Accomplished!";
+				diff="Accomplished!";//+getDifference(period)+" ago" ;
 			}else {
 				if(!period.isNegative()) {
-				diff=period.getYears() + " years, "+period.getMonths() + " months, "+period.getDays() + " days";
+				diff=getDifference(period);
 				}else {
-					diff="Expired!";
+					diff="Expired "+getNegativeDifference(period)+" ago!";
 				}
 		    }
 			t.setRemainingTime(diff);
@@ -62,6 +63,35 @@ public class TaskController {
 		}
 	}
 
+	private String getDifference(Period period) {
+		StringBuffer diff=new StringBuffer();
+		if(period.getYears()!=0) {
+			diff.append(period.getYears() + " years, "+period.getMonths() + " months, "+period.getDays() + " days");
+		}else {
+			if(period.getMonths()!=0) {
+				diff.append(period.getMonths() + " months, "+period.getDays() + " days");
+			}else {
+				diff.append(period.getDays() + " days");
+			}
+		}
+		
+		return diff.toString();
+	}
+	
+	private String getNegativeDifference(Period period) {
+		StringBuffer diff=new StringBuffer();
+		if(period.getYears()!=0) {
+			diff.append(-period.getYears() + " years, "+-period.getMonths() + " months, "+-period.getDays() + " days");
+		}else {
+			if(period.getMonths()!=0) {
+				diff.append(-period.getMonths() + " months, "+-period.getDays() + " days");
+			}else {
+				diff.append(-period.getDays() + " days");
+			}
+		}
+		
+		return diff.toString();
+	}
 	@RequestMapping(value="add-task",method = RequestMethod.GET)
 	public String showNewTaskPage(ModelMap model) {
 		String username = getLoggedInUsername();

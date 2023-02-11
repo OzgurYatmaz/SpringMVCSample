@@ -2,7 +2,7 @@
 <%@ include file="common/navigation.jspf" %>
 	<div class="container">
 
-		<h1>Enter Task details:</h1>
+		<h1>Enter task details:</h1>
 		<form:form action="addTask" method="post" modelAttribute="task">
 			<fieldset class="mb-3">
 				<form:label path="description">Description</form:label>

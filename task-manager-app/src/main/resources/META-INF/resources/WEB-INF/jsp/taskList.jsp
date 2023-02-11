@@ -2,9 +2,9 @@
 	<%@ include file="common/navigation.jspf" %>
 
 	<div class="container">
-		<div>Welcome Mr ${name}</div>
+		<div>Welcome Dear ${name}</div>
 		<hr>
-		<h1>Here are your Tasks:</h1>
+		<h1>Here are your tasks:</h1>
 		<table class="table">
 			<thead>
 				<tr>
