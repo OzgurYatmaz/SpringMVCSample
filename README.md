@@ -6,6 +6,7 @@ Tasks and users are managed by spring data jpa over mysql db. Fuctionality the a
  - Once Owner is manually inserted to DB api can be used. (Look at the text file in "docs" folder to perform that)
  - Admin or Owner can add  any number of users but only Owner can delete users.
  - User can only see and manage his own tasks but cannot see or manages oher user's tasks or cannot see or manage other users.
+ - Task are ordered by target date.
  - When any owner deletes any user, tasks of deleted user are automatically removed from DB.
 
 <p align="center">
