@@ -23,13 +23,13 @@
 						<td>${user.name}</td>
 						<td>${user.email}</td>
 						<td>${user.role}</td>
-						<td><a type="button" class="btn btn-warning" href="/deleteUser?id=${user.id}"> Delete</a></td>
+						<td><a type="button" class="btn btn-warning" href="${pageContext.request.contextPath}/deleteUser?id=${user.id}"> Delete</a></td>
 <%-- 						<td><a type="button" class="btn btn-success" href="/updateUser?id=${user.id}"> Update</a></td> --%>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="/showAddUserPage" class="btn btn-success"> Add User</a> 
+		<a href="${pageContext.request.contextPath}/showAddUserPage" class="btn btn-success"> Add User</a> 
 <!-- 		<a href="add-task" class="btn btn-success">Add Task</a> -->
 	</div>
 	<%@ include file="common/footer.jspf" %>

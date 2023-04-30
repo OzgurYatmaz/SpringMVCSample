@@ -28,14 +28,14 @@
 						<td>${task.done}</td>
 						<td>${task.remainingTime}</td>
 						<td><a type="button" class="btn btn-warning"
-							href="/deleteTask?id=${task.id}"> Delete</a></td>
+							href="${pageContext.request.contextPath}/deleteTask?id=${task.id}"> Delete</a></td>
 						<td><a type="button" class="btn btn-success"
-							href="/updateTask?id=${task.id}"> Update</a></td>
+							href="${pageContext.request.contextPath}/updateTask?id=${task.id}"> Update</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<a href="add-task" class="btn btn-success">Add Task</a>
+		<a href="${pageContext.request.contextPath}/add-task" class="btn btn-success">Add Task</a>
 	</div>
 	<%@ include file="common/footer.jspf" %>
 
