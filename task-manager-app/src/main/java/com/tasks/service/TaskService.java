@@ -26,7 +26,6 @@ public class TaskService {
 		taskRepository.save(task);
 	}
 	public List<Task> findAllTasksForSpecificUser(String id){
-		//return taskRepository.findByUser_idOrderByDescription(id);
 		return taskRepository.findByUser_idOrderByTargetDate(id);
 	}
 	public void deleteTaskById(int id) {
@@ -37,8 +36,6 @@ public class TaskService {
 		return taskRepository.findById(id).get();
 	}
 	public void updateTask(@Valid Task task) {
-		deleteTaskById(task.getId());
-	//	addTask(task.getUsername(),task.getDescription(), task.getTargetDate(), task.isDone());
 		taskRepository.save(task);
 	}
  
