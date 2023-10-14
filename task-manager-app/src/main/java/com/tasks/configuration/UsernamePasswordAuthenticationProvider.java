@@ -1,4 +1,5 @@
 package com.tasks.configuration;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,6 @@ import org.springframework.util.CollectionUtils;
 import com.tasks.model.AppUser;
 import com.tasks.repository.UserRepository;
 
-
 @Component
 public class UsernamePasswordAuthenticationProvider implements AuthenticationProvider {
 
@@ -29,26 +29,23 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		String username=authentication.getName();
-		String password=authentication.getCredentials().toString();
-		System.out.println("username: "+username+" password: "+password);
+		String username = authentication.getName();
+		String password = authentication.getCredentials().toString();
+		System.out.println("username: " + username + " password: " + password);
 		List<AppUser> users = userRepository.findByName(username);
-		if(!CollectionUtils.isEmpty(users)) {
+		if (!CollectionUtils.isEmpty(users)) {
 			AppUser user = users.get(0);
-			if(encoder.matches(password, user.getPassword())) {
-				List<GrantedAuthority> authorities=new ArrayList<>();
+			if (encoder.matches(password, user.getPassword())) {
+				List<GrantedAuthority> authorities = new ArrayList<>();
 				authorities.add(new SimpleGrantedAuthority(user.getRole()));
 				return new UsernamePasswordAuthenticationToken(username, password, authorities);
-			}else {
+			} else {
 				throw new BadCredentialsException("invalid password!");
 			}
-		}else {
+		} else {
 			throw new BadCredentialsException("No user registered with this details");
 		}
 	}
-
-
- 
 
 	@Override
 	public boolean supports(Class<?> authentication) {

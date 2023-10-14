@@ -1,4 +1,5 @@
 package com.tasks.service;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,28 +16,30 @@ import jakarta.validation.Valid;
 
 @Service
 public class TaskService {
-	
- 
+
 	@Autowired
 	private TaskRepository taskRepository;
-	
+
 	public void addTask(String username, String description, LocalDate targetDate, boolean done, AppUser user) {
-		Task task=new Task( username, description, targetDate, LocalDate.now(), done);
+		Task task = new Task(username, description, targetDate, LocalDate.now(), done);
 		task.setUser(user);
 		taskRepository.save(task);
 	}
-	public List<Task> findAllTasksForSpecificUser(String id){
+
+	public List<Task> findAllTasksForSpecificUser(String id) {
 		return taskRepository.findByUser_idOrderByTargetDate(id);
 	}
+
 	public void deleteTaskById(int id) {
 		taskRepository.deleteById(id);
 	}
-	
+
 	public Task findTaskById(int id) {
 		return taskRepository.findById(id).get();
 	}
+
 	public void updateTask(@Valid Task task) {
 		taskRepository.save(task);
 	}
- 
+
 }

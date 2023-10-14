@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class AppUser {
 
 	@Id
@@ -30,10 +30,10 @@ public class AppUser {
 	@Transient
 	private int count;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")//so that user_ıd column will be created in post table
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user") // so that user_ıd column will be created in post table
 //	@JsonIgnore //not needed to be returned in response
 	private List<Task> tasks;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -81,8 +81,6 @@ public class AppUser {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-
- 
 
 	public int getCount() {
 		return count;

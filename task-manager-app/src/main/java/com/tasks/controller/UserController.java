@@ -23,7 +23,7 @@ public class UserController {
 
 	@RequestMapping(value = "/showAddUserPage", method = RequestMethod.GET)
 	private String ShowAddUserPage(ModelMap model) {
-		AppUser u=new AppUser();
+		AppUser u = new AppUser();
 		u.setEmail("");
 		u.setName("");
 		u.setPassword("");
@@ -35,7 +35,7 @@ public class UserController {
 	@RequestMapping(value = "addUser", method = RequestMethod.POST)
 	public String addNewUser(ModelMap model, AppUser user, BindingResult reult) {
 		if (reult.hasErrors()) {
- 
+
 			return "user";
 		}
 		userService.saveUser(user);
@@ -49,20 +49,21 @@ public class UserController {
 		model.put("users", allUsers);
 		return "userList";
 	}
-	
+
 	private void addCount(List<AppUser> allUsers) {
-		int c=1;
-		for(AppUser a:allUsers) {
+		int c = 1;
+		for (AppUser a : allUsers) {
 			a.setCount(c);
 			c++;
 		}
 	}
 
-	@RequestMapping(value="deleteUser")
+	@RequestMapping(value = "deleteUser")
 	public String deleteTask(@RequestParam int id) {
 		userService.deleteUserById(id);
 		return "redirect:showAllUsers";
 	}
+
 	private String getLoggedinUsername() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return auth.getName();

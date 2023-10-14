@@ -19,39 +19,39 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Task {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+	@GenericGenerator(name = "native", strategy = "native")
 	private int id;
 	private String username;
-	@Size(min=3, message = "At least 3 characters")
+	@Size(min = 3, message = "At least 3 characters")
 	private String description;
 	private LocalDate givenDate;
 	private LocalDate targetDate;
-	@Transient//to disable jpa to create a column in DB
+	@Transient // to disable jpa to create a column in DB
 	private String remainingTime;
 	@Transient
 	private int priority;
 	private boolean done;
 
-	@ManyToOne//(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@ManyToOne // (fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private AppUser user;
-	
+
 	public Task() {
 		super();
 	}
 
-	public Task( String username, String description, LocalDate targetDate, LocalDate givenDate, boolean done) {
+	public Task(String username, String description, LocalDate targetDate, LocalDate givenDate, boolean done) {
 		super();
-		//this.id = id;
+		// this.id = id;
 		this.username = username;
 		this.description = description;
 		this.targetDate = targetDate;
-		this.givenDate=givenDate;
+		this.givenDate = givenDate;
 		this.done = done;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -129,8 +129,5 @@ public class Task {
 		return "Task [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
 				+ targetDate + ", done=" + done + ", user=" + user + "]";
 	}
-
-	 
-	 
 
 }
