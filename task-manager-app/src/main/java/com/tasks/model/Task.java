@@ -4,10 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -127,7 +124,7 @@ public class Task {
 	@Override
 	public String toString() {
 		return "Task [id=" + id + ", username=" + username + ", description=" + description + ", targetDate="
-				+ targetDate + ", done=" + done + ", user=" + user + "]";
+				+ targetDate + ", done=" + done + "]";
 	}
 
 }

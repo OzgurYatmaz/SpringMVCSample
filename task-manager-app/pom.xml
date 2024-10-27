@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.tasks</groupId>
 	<artifactId>task-manager-app</artifactId>
-	<version>1.0</version>
+	<version>final</version>
 <!--	<packaging>war</packaging>-->
 	<name>task-manager-app</name>
 	<description>Demo project for Spring Boot</description>
